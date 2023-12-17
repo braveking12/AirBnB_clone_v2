@@ -9,6 +9,14 @@ from models.place import Place
 from models.review import Review
 from os import getenv
 
+"""Instantiates a storage object.
+
+-> If the environmental variable 'HBNB_TYPE_STORAGE' is set to 'db',
+   instantiates a database storage engine (DBStorage).
+
+-> Otherwise, instantiates a file storage engine (FileStorage).
+"""
+
 
 if getenv("HBNB_TYPE_STORAGE") == "db":
     from models.engine.db_storage import DBStorage

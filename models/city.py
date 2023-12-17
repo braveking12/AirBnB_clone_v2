@@ -10,7 +10,7 @@ from sqlalchemy.ext.declarative import declarative_base
 class City(BaseModel, Base):
     """This is the class for City
 
-    Attr:
+    Attributes:
         state_id: The state id
         name: input name
         places (sqlalchemy relationship): The user-Place relationship.

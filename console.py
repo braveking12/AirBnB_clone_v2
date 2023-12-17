@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """This is the console for AirBnB"""
 import cmd
-
 from models import storage
 from datetime import datetime
 from models.base_model import BaseModel
@@ -33,39 +32,42 @@ class HBNBCommand(cmd.Cmd):
         """Quit command to exit the program at end of file"""
         return True
 
-    def do_create(self, line):
-        """Usage: create <class> <key 1>=<value 2> <key 2>=<value 2> ...
-        Create a new class instance with given keys/values and print its id.
+    def do_create(self, args):
+        """Creates a new instance of BaseModel.
+
+        Exceptions:
+            SyntaxError: when there is no args given
+            NameError: when there is no object taht has the name
+
         """
+
         try:
-            if not line:
+            if not args:
                 raise SyntaxError()
-            my_list = line.split(" ")
 
-            kwargs = {}
-            for i in range(1, len(my_list)):
-                key, value = tuple(my_list[i].split("="))
-                if value[0] == '"':
-                    value = value.strip('"').replace("_", " ")
-                else:
+            splittedArgs = args.split(" ")
+            inst = eval("{}()".format(splittedArgs[0]))
+
+            for commandArg in splittedArgs[1:]:
+                param = commandArg.split("=")
+                key = param[0]
+                value = param[1].replace("_", " ")
+
+                if hasattr(inst, key):
                     try:
-                        value = eval(value)
-                    except (SyntaxError, NameError):
-                        continue
-                kwargs[key] = value
+                        setattr(inst, key, eval(value))
+                    except Exception:
+                        pass
 
-            if kwargs == {}:
-                obj = eval(my_list[0])()
-            else:
-                obj = eval(my_list[0])(**kwargs)
-                storage.new(obj)
-            print(obj.id)
-            obj.save()
+            inst.save()
 
+            print("{}".format(inst.id))
         except SyntaxError:
             print("** class name missing **")
         except NameError:
             print("** class doesn't exist **")
+        except IndexError:
+            pass
 
     def do_show(self, line):
         """Prints the string representation of an instance

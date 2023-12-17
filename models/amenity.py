@@ -1,12 +1,9 @@
 #!/usr/bin/python3
-""" State Module for HBNB project """
-from models.base_model import Base
-from models.base_model import BaseModel
-from sqlalchemy import Column
-from sqlalchemy import String
-from sqlalchemy.orm import relationship
+"""This is the amenity class"""
+from models.base_model import BaseModel, Base
 from os import getenv
-
+from sqlalchemy import Column, Table, String, ForeignKey
+from sqlalchemy.orm import relationship
 
 place_amenity = Table("place_amenity", Base.metadata,
                       Column("place_id", String(60),
