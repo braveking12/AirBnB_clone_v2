@@ -1,10 +1,12 @@
 #!/usr/bin/python3
 """base model class for AirBnB"""
-from sqlalchemy.ext.declarative import declarative_base
-import uuid
 import models
+from uuid import uuid4
 from datetime import datetime
-from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column
+from sqlalchemy import DateTime
+from sqlalchemy import String
 
 
 Base = declarative_base()
