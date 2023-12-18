@@ -4,6 +4,9 @@ This repository contains the initial stage of a student project to build a clone
 
 ---
 
+![hbnb_step2](https://github.com/anthonyosigbe/AirBnB_clone_v2/assets/45193993/be9350f3-0bad-4147-b40c-7992b83f2b58)
+
+
 <center><h3>Repository Contents by Project Task</h3> </center>
 
 | Tasks | Files | Description |
