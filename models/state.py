@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This is the state class for RBNB PROJECT"""
+"""This is the state class"""
 import models
 from models.base_model import BaseModel, Base
 from models.city import City
